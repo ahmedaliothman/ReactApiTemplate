@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PublicMasterPage({children}) {
+function PublicMasterPage({children}:any) {
     return (
         <div>
         <h1>Public Master Page Header</h1>

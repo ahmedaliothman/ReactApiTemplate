@@ -2,7 +2,7 @@ import { call, put, takeEvery, all } from "redux-saga/effects";
 import * as api from './api';
 import { Constants } from "../constants";
 
-export function* addPost({ payload }) {
+export function* addPost({ payload }:any) {
     try {
         let output = yield call(api.createPost, payload);
         yield put({ type: 'ADD_POST_SUCCESS', payload: output });
@@ -16,7 +16,7 @@ function* watchAddPost() {
     yield takeEvery('ADD_POST', addPost);
 }
 
-export function* editPost({ payload }) {
+export function* editPost({ payload }:any) {
     try {
         let output = yield call(api.editPost, payload);
         yield put({ type: 'EDIT_POST_SUCCESS', payload: output });
@@ -30,7 +30,7 @@ function* watchEditPost() {
     yield takeEvery('EDIT_POST', editPost);
 }
 
-export function* deletePost({ payload }) {
+export function* deletePost({ payload }:any) {
     try {
         let output = yield call(api.deletePost, payload);
         yield put({ type: 'DELETE_POST_SUCCESS', payload: output });
@@ -57,7 +57,7 @@ function* watchFetchPosts() {
     yield takeEvery('FETCH_POSTS', fetchPosts);
 }
 
-export function* fetchPostDetail({ payload }) {
+export function* fetchPostDetail({ payload }:any) {
     try {
         const output = yield call(api.getPostDetail, payload);
         yield put({ type: 'FETCH_POST_DETAIL_SUCCESS', payload: output });
@@ -70,7 +70,7 @@ function* watchFetchPostDetail() {
     yield takeEvery('FETCH_POST_DETAIL', fetchPostDetail);
 }
 
-export function* addComment({ payload }) {
+export function* addComment({ payload }:any) {
     try {
         const output = yield call(api.createComment, payload);
         yield put({ type: 'ADD_COMMENTS_SUCCESS', payload: output });
@@ -84,7 +84,7 @@ function* watchAddComment() {
     yield takeEvery('ADD_COMMENT', addComment);
 }
 
-export function* fetchComments({ payload }) {
+export function* fetchComments({ payload }:any) {
     try {
         const output = yield call(api.getComments, payload);
         yield put({ type: 'FETCH_COMMENTS_SUCCESS', payload: output });
@@ -97,7 +97,7 @@ function* watchFetchComments() {
     yield takeEvery('FETCH_COMMENTS', fetchComments);
 }
 
-export function* login({ payload }) {
+export function* login({ payload }:any) {
     try {
         let output = yield call(api.login, payload);
         yield put({ type: 'LOGIN_REQUEST_SUCCESS', payload: output });
@@ -110,7 +110,7 @@ function* watchLogin() {
     yield takeEvery('LOGIN_REQUEST', login);
 }
 
-export function* register({ payload }) {
+export function* register({ payload }:any) {
     try {
         let output = yield call(api.register, payload);
         yield put({ type: Constants.REGISTER_SUCCESS, payload: output });

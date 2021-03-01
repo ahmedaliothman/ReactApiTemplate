@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Constants } from "../constants";
 import { useHistory } from "react-router-dom";
+import { StoreState } from '../Store/types/index';
 
-export const MasterPage=({ children }) =>{
+
+export const MasterPage=({ children }:any) =>{
     return (
         <div className="flex flex-col items-strech">
             <h1>this is header</h1>
@@ -19,11 +21,9 @@ export const MasterPage=({ children }) =>{
 
 
 export const Navigation = () => {
-
-    const userContext = useSelector(state => {
-      return state.userContext;
-    });
   
+    let userContext:StoreState.state1;
+    userContext =  useSelector<StoreState.state1>(state => { return state;}) as StoreState.state1;
     let dispatch = useDispatch();
     let history = useHistory();
   

@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect, useRouteMatch, 
 import { useSelector, useDispatch } from 'react-redux';
 import { MasterPage } from './MasterPage';
 import PublicMasterPage from './PublicMasterPage';
+import { StoreState } from '../Store/types/index';
 
-export const PrivateRoute = ({ component: Component, ...rest }) => {
-
-    const userContext = useSelector(state => {
-      return state.userContext;
-    });
-  
+export const PrivateRoute = ({ component: Component, ...rest }:any) => {
+  // const userContext=useSelector<StoreState.state1>(state=>state)
+    // const userContext = useSelector(state => {
+    //   return state.userContext;
+    // });
+    let userContext:StoreState.state1;
+    userContext =  useSelector<StoreState.state1>(state => { return state;}) as StoreState.state1;
     return (
       <Route {...rest} render={props => {
         return (userContext.isAuthenticated)
@@ -20,7 +22,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
   }
   
   
-  export const  PublicRoute=({ component: Component, ...rest })=> {
+  export const  PublicRoute=({ component: Component, ...rest }:any)=> {
     return (
       <Route {...rest} render={props => {
         return ( <PublicMasterPage><Component {...props} /></PublicMasterPage>)

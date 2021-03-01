@@ -1,10 +1,10 @@
 import {StoreState} from ".././Store/types/index";
 
-const initialState = {
-    postList: [],
+let initialState:StoreState.state2 = {
+    postList: [null],
     selectedPost: {},
-    selectedComments: [],
-    notificationText: ''
+    selectedComments: [null],
+    notificationText: null
 };
 
 // type Props = {
